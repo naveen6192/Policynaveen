@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/Policy/updatepolicy" th:object="${policy}" method="get">
+    <label>POLICY</label>
+    policynumber:<input type="number" th:field="${policy.policynumber}" id="policynumber">
+    holdername:<input type="text" th:field="${policy.holdername}" id="name">
+    address1:<input type="text" th:field="${policy.address1}" id="address1">
+    address2:<input type="text" th:field="${policy.address2}" id="address2">
+    <br>
+    State:
+    <select name="state" value="selectedstate[]">
+        <option th:each="state:${state}" th:value="${state.id}" th:text="${state.state}"></option>
+    </select>
+    <br>
+
+
+
+    <br>
+    Coverages:
+    <select name="coverage" value="coverage[]" multiple="multiple">
+        <option th:each="cover:${coverage}" th:value="${cover.id}" th:text="${cover.coveragename}"></option>
+    </select>
+    <input type="submit" value="update">
+</form>
+</body>
+</html>
